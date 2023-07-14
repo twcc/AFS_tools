@@ -1,4 +1,4 @@
-# LLM_tools
+# AFS tools
 
 ## Get Token
 file: get_token.py, get_token_inputs.json
