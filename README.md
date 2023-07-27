@@ -14,7 +14,7 @@ and output will be like
 
 
 
-## Get semantic test
+## Do Semantic Test
 
 After you deploy a AFS Cloud, you can get service endpoint and API information, as well as paste those information to `get_semantic.py` you can run this command: 
 ```
