@@ -1,8 +1,13 @@
+import os
 import json
 import re
-from httpx import main
+import argparse
+
+os.environ['TRANSFORMERS_VERBOSITY'] = 'error'
+
 from transformers import AutoTokenizer
 tokenizer = AutoTokenizer.from_pretrained('bigscience/tokenizer')
+
 
 
 def get_token(inputs, targets):
@@ -10,10 +15,10 @@ def get_token(inputs, targets):
     print(len(tokens), " tokens.")
 
 
-def main():
+def do_token_calculate(filename):
     error_list = []
     # load file
-    with open('get_token_inputs.json', 'r') as file:
+    with open(filename, 'r') as file:
         for index, line in enumerate(file):
             try:
                 data = json.loads(line)
@@ -30,9 +35,18 @@ def main():
                     targets = match[1]
                     get_token(inputs, targets)
     if error_list != []:
-        print(
-            f"Please check data!!! lines: [{','.join(error_list)}] format are not correct")
+        print(f"Please check data!!! lines: [{','.join(error_list)}] format are not correct")
 
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-f', '--filename', help='the name of the file to operate on')
+    args = parser.parse_args()
+
+    if args.filename:
+        print(f'Operating on file: {args.filename}')
+    else:
+        args.filename = './jsonl/get_token_inputs.jsonl'
+        
+    do_token_calculate(args.filename)
+
