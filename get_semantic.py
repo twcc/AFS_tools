@@ -39,7 +39,8 @@ def main(filename):
     inputs = load_inputs(filename)
     for text in inputs:
         response = inference(text).json()['generated_text']
-        print(f"INPUT: {text}\n\tResponse:{response}")
+        print(f"[INPUT]\n{text}\n\n[Response]\n{response}")
+        print("="*20)
 
 
 if __name__ == '__main__':
