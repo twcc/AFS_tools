@@ -4,8 +4,8 @@ import argparse
 
 # set your own enviroments
 # ========================
-API_ENDPOINT = 'https://203-145-216-185.ccs.twcc.ai:56475'		# copy from your AFS Cloud
-API_KEY      = 'b5ca9493-bc56-4065-b464-75562f138546' 		# copy from your AFS Cloud
+API_ENDPOINT = ''		# copy from your AFS Cloud
+API_KEY      = '' 		# copy from your AFS Cloud
 # ========================
 
 MODEL_ID = '00000000'  # keep this, default model_id
@@ -54,5 +54,5 @@ if __name__ == '__main__':
         print(f'Operating on file: {args.filename}')
     else:
         args.filename = './jsonl/TWS_AFS_CLOUD_EVAL.jsonl'
-        
+
     main(args.filename)
