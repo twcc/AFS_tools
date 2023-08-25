@@ -1,6 +1,7 @@
 .venv*
 .vscode
-use_cases/webcrawler_chatbot/scrapy/*
+.scrapy*
+use_cases/webcrawler_chatbot/scrapy/website/*
 use_cases/webcrawler_chatbot/.env
 use_cases/webcrawler_chatbot/embeddings/*
 *.pyc
