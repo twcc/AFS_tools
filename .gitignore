@@ -1,1 +1,7 @@
 .venv*
+.vscode
+use_cases/webcrawler_chatbot/scrapy/*
+use_cases/webcrawler_chatbot/.env
+use_cases/webcrawler_chatbot/embeddings/*
+*.pyc
+file.log
