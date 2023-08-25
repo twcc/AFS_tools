@@ -26,3 +26,8 @@ and output will be like
 ![semantic evalution](imgs/semantic_evaluation.png)
 
 You can change to your dataset accordingly.
+
+
+## Use Case
+
+You can observe [use case](use_cases/) for service integration ideas.
