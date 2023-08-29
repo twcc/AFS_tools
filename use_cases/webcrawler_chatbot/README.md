@@ -22,6 +22,17 @@ In this use case, web combines web crawling with Scrapy, data enhancement throug
         - Set `API_KEY_EMBEDDING` to your embedding service's API key (e.g., 853e8046-xxx-xxx-xxx-d8dcf0bcf025).
         - Set `AFS_CLOUD_FFM` to your FFM (Formosa Foundataion Model) service's URL in [AFS Cloud](https://docs.twcc.ai/en/docs/user-guides/twcc/afs/afs-cloud).
         - Set `API_KEY_FFM` to your FFM service's API key.
+        - You can use `.env` to manage those parameters,
+```  
+AFS_CLOUD_EMBEDDING=https://203-***-***-185.ccs.twcc.ai:5****
+API_KEY_EMBEDDING=853e8046-***-***-***-d8dcf0bcf025
+
+AFS_CLOUD_FFM=https://203-***-***-185.ccs.twcc.ai:5***
+API_KEY_FFM=db2fb350-***-***-***-ff58b9d28f9f
+
+ENDPOINT_EMBEDDING=${AFS_CLOUD_EMBEDDING}/embeddings/api/embeddings
+ENDPOINT_FFM=${AFS_CLOUD_FFM}/text-generation/api/models/generate
+```
 2. To test your embedding service, run: `python test_ffm.py`
 
 ## Step 4: Vectorize Website Dataset
