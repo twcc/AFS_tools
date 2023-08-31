@@ -47,6 +47,6 @@ if __name__ == '__main__':
         print(f'Operating on file: {args.filename}')
     else:
         args.filename = './jsonl/get_token_inputs.jsonl'
-        
+
     do_token_calculate(args.filename)
 

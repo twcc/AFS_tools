@@ -8,9 +8,8 @@ API_ENDPOINT = ''		# copy from your AFS Cloud
 API_KEY      = '' 		# copy from your AFS Cloud
 # ========================
 
-MODEL_ID = '00000000'  # keep this, default model_id
-API_SERVER = API_ENDPOINT+"/text-generation"
-INFERENCE_SERVER = f"{API_SERVER}/api/models/{MODEL_ID}"
+MODEL_ID = 'ffm-7b'  # keep this, default model_id
+INFERENCE_SERVER = f"{API_ENDPOINT}/text-generation/api/models/generate"
 
 
 def load_inputs(filename):
@@ -22,22 +21,23 @@ def load_inputs(filename):
 
 
 def inference(text):
-    url = "{}/generate".format(INFERENCE_SERVER)
     headers = {
         "X-API-KEY": API_KEY,
         "content-type": "application/json"
     }
     data = {
-        "inputs": text + "\n\nA:"
+        "inputs": text + "\n\nA:",
+        "model": f"{MODEL_ID}"
     }
 
-    ans = rq.post(url, headers=headers, json=data)
+    ans = rq.post(INFERENCE_SERVER, headers=headers, json=data)
     return ans
 
 
 def main(filename):
     inputs = load_inputs(filename)
     for text in inputs:
+        print(inference(text).json())
         response = inference(text).json()['generated_text']
         print(f"[INPUT]\n{text}\n\n[Response]\n{response}")
         print("="*20)
