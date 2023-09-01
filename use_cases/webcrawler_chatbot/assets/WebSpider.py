@@ -1,7 +1,7 @@
 import re
 import scrapy
 from scrapy.linkextractors import LinkExtractor
-from ..items import TwscWebsiteItem
+from ..items import WebsiteItem
 from bs4 import BeautifulSoup
 
 
@@ -19,7 +19,7 @@ class WebSpider(scrapy.Spider):
     ]
     allowed_domains = ['tws.twcc.ai', 'twsc.twcc.ai']
     def parse(self, response):
-        item = TwscWebsiteItem()
+        item = WebsiteItem()
         item['url'] = response.url
         item['title'] = response.xpath('//title/text()').get()
         item['body'] = replace_multiple_newlines("".join(BeautifulSoup(response.body.decode('utf-8'), "html.parser").get_text()))
