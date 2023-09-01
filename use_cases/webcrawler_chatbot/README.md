@@ -16,7 +16,7 @@ In this use case, web combines web crawling with Scrapy, data enhancement throug
 
 1. Update the following parameters as needed:
 
-    - Modify the `GENERATED_JSON_FILE_PATH` parameter to point to your JSON data file.
+    - Modify the `GENERATED_JSON_FILE_PATH` parameter to point to your JSON data file. (in `load_embedding_website.py` file)
     - Update your AFS Cloud endpoint information in the ".env" file:
         - Set `AFS_CLOUD_EMBEDDING` to your embedding service's URL (e.g., https://203-145-216-185.ccs.twcc.ai:5xxx1).
         - Set `API_KEY_EMBEDDING` to your embedding service's API key (e.g., 853e8046-xxx-xxx-xxx-d8dcf0bcf025).
@@ -24,15 +24,18 @@ In this use case, web combines web crawling with Scrapy, data enhancement throug
         - Set `API_KEY_FFM` to your FFM service's API key.
         - You can use `.env` to manage those parameters,
 ```  
-AFS_CLOUD_EMBEDDING=https://203-***-***-185.ccs.twcc.ai:5****
-API_KEY_EMBEDDING=853e8046-***-***-***-d8dcf0bcf025
+export AFS_CLOUD_EMBEDDING=https://203-***-***-185.ccs.twcc.ai:5****
+export API_KEY_EMBEDDING=853e8046-***-***-***-d8dcf0bcf025
 
-AFS_CLOUD_FFM=https://203-***-***-185.ccs.twcc.ai:5***
-API_KEY_FFM=db2fb350-***-***-***-ff58b9d28f9f
+export AFS_CLOUD_FFM=https://203-***-***-185.ccs.twcc.ai:5***
+export API_KEY_FFM=db2fb350-***-***-***-ff58b9d28f9f
 
-ENDPOINT_EMBEDDING=${AFS_CLOUD_EMBEDDING}/embeddings/api/embeddings
-ENDPOINT_FFM=${AFS_CLOUD_FFM}/text-generation/api/models/generate
+export ENDPOINT_EMBEDDING=${AFS_CLOUD_EMBEDDING}/embeddings/api/embeddings
+export ENDPOINT_FFM=${AFS_CLOUD_FFM}/text-generation/api/models/generate
 ```
+> remember to reload environment settings after you change values, by using `source .dotenv`.
+
+
 2. To test your embedding service, run: `python test_ffm.py`
 
 ## Step 4: Vectorize Website Dataset
@@ -45,8 +48,10 @@ ENDPOINT_FFM=${AFS_CLOUD_FFM}/text-generation/api/models/generate
 
 1. Launch the API server using the command: `uvicorn chat_api_server:app --host 0.0.0.0 --port 8000`
 
+Suggestion: you can use "&" at the end of the command, so you can keep going on next step.
+
 ## Step 6: Start Chat UI Server
 
-Start the chat user interface server by running: `streamlit run chat_ui_server.py`
+Start the chat user interface server by running: `python -m streamlit run chat_ui_server.py`
 
 Following these steps will help you successfully complete the process, from generating essential dataset for embedding, updating parameters, vectorizing website data, to launching the API server and chat user interface server. Keep these instructions as a reference whenever needed.
