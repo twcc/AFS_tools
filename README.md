@@ -1,6 +1,6 @@
 # AFS Toolkits
 
-## Get Token Number
+## Get Token Number with format validation
 
 Use this tool to do token calcuation offline, usage:
 
@@ -12,6 +12,8 @@ and output will be like
 
 ![token calcuate](imgs/token_calcuate.png)
 
+
+In the demo image above, you can see the bottom line shows `lines [2]` format is not correct.
 
 
 ## Do Semantic Test
