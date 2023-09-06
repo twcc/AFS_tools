@@ -37,7 +37,7 @@ datasets = loader.load_and_split(text_splitter=splitFunc)
 doc_embedding = FAISS.from_documents(
     documents=datasets, embedding=embeddings_zh)
 
-doc_embedding.save_local(f"./embeddings/all_docs_embedding_website")
+doc_embedding.save_local(f"/home/ubuntu/embeddings/all_docs_embedding_website")
 
 end_time = time.time()
 running_time = end_time - start_time
