@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile
     entrypoint: /docker-entrypoint.sh
     environment:
+      - CRAWL_DOMAINS=${CRAWL_DOMAINS}
+      - CRAWL_START_URL=${CRAWL_START_URL}
       - AFS_CLOUD_EMBEDDING=${AFS_CLOUD_EMBEDDING}
       - API_KEY_EMBEDDING=${API_KEY_EMBEDDING}
       - AFS_CLOUD_FFM=${AFS_CLOUD_FFM}

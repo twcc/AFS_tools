@@ -13,11 +13,18 @@ def replace_multiple_newlines(txt):
     
 class WebSpider(scrapy.Spider):
     name = "website"
-    
-    start_urls = [
-        "https://tws.twcc.ai/",
-    ]
-    allowed_domains = ['tws.twcc.ai', 'twsc.twcc.ai']
+   
+    import os
+    if 'CRAWL_DOMAINS' in os.environ:
+        allowed_domains = os.environ['CRAWL_DOMAINS'].split(",")
+    else:
+        allowed_domains = ['twsc.twcc.ai']
+
+    if 'CRAWL_START_URL' in os.environ:
+        start_urls = os.environ['CRAWL_START_URL'].split(",")
+    else:
+        start_urls = ["https://tws.twcc.ai/"]
+
     def parse(self, response):
         item = WebsiteItem()
         item['url'] = response.url

@@ -12,7 +12,6 @@ else
   cp AFS_tools/use_cases/webcrawler_chatbot/assets/WebSpider.py AFS_tools/use_cases/webcrawler_chatbot/scrapy/website/website/spiders/
   cp AFS_tools/use_cases/webcrawler_chatbot/assets/items.py AFS_tools/use_cases/webcrawler_chatbot/scrapy/website/website/
   cd AFS_tools/use_cases/webcrawler_chatbot/scrapy/website/website/
-  sed -i 's/TwscWebsiteItem/WebsiteItem/g' spiders/WebSpider.py
   scrapy crawl website -o website.json
   cd /home/ubuntu/AFS_tools/use_cases/webcrawler_chatbot
   apk add build-base libressl-dev libffi-dev

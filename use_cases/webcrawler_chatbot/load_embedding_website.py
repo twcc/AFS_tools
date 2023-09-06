@@ -3,8 +3,12 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import JSONLoader
 from langchain.vectorstores import FAISS
 from libs.using_ffm import get_embed
+import loguru
+
+log = loguru.logger
 
 GENERATED_JSON_FILE_PATH = "/home/ubuntu/AFS_tools/use_cases/webcrawler_chatbot/scrapy/website/website/website.json"
+log.info(f"Doing embedding in {GENERATED_JSON_FILE_PATH}")
 
 embeddings_zh = get_embed()
 
