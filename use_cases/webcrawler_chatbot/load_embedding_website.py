@@ -3,8 +3,12 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import JSONLoader
 from langchain.vectorstores import FAISS
 from libs.using_ffm import get_embed
+import loguru
+
+log = loguru.logger
 
 GENERATED_JSON_FILE_PATH = "/home/ubuntu/AFS_tools/use_cases/webcrawler_chatbot/scrapy/website/website/website.json"
+log.info(f"Doing embedding for {GENERATED_JSON_FILE_PATH}")
 
 embeddings_zh = get_embed()
 
@@ -33,7 +37,7 @@ datasets = loader.load_and_split(text_splitter=splitFunc)
 doc_embedding = FAISS.from_documents(
     documents=datasets, embedding=embeddings_zh)
 
-doc_embedding.save_local(f"./embeddings/all_docs_embedding_website")
+doc_embedding.save_local(f"/home/ubuntu/embeddings/all_docs_embedding_website")
 
 end_time = time.time()
 running_time = end_time - start_time
