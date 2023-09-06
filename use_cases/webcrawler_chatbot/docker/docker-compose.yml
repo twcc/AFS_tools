@@ -1,0 +1,16 @@
+version: '3'
+services:
+  afs_demo:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: /docker-entrypoint.sh
+    environment:
+      - AFS_CLOUD_EMBEDDING=${AFS_CLOUD_EMBEDDING}
+      - API_KEY_EMBEDDING=${API_KEY_EMBEDDING}
+      - AFS_CLOUD_FFM=${AFS_CLOUD_FFM}
+      - API_KEY_FFM=${API_KEY_FFM}
+      - ENDPOINT_EMBEDDING=${AFS_CLOUD_EMBEDDING}/embeddings/api/embeddings
+      - ENDPOINT_FFM=${AFS_CLOUD_FFM}/text-generation/api/models/generate
+    ports:
+      - 8501:80
