@@ -8,7 +8,7 @@ import loguru
 log = loguru.logger
 
 GENERATED_JSON_FILE_PATH = "/home/ubuntu/AFS_tools/use_cases/webcrawler_chatbot/scrapy/website/website/website.json"
-log.info(f"Doing embedding in {GENERATED_JSON_FILE_PATH}")
+log.info(f"Doing embedding for {GENERATED_JSON_FILE_PATH}")
 
 embeddings_zh = get_embed()
 

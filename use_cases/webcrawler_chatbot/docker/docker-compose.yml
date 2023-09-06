@@ -15,4 +15,8 @@ services:
       - ENDPOINT_EMBEDDING=${AFS_CLOUD_EMBEDDING}/embeddings/api/embeddings
       - ENDPOINT_FFM=${AFS_CLOUD_FFM}/text-generation/api/models/generate
     ports:
-      - 8501:80
+      - 80:8501
+    volumes:
+      - embedding_folder:/home/ubuntu/embeddings/all_docs_embedding_website
+volumes:
+  embedding_folder:
