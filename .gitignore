@@ -6,3 +6,4 @@ use_cases/webcrawler_chatbot/.env
 use_cases/webcrawler_chatbot/embeddings/*
 *.pyc
 file.log
+.env
