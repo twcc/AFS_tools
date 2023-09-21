@@ -12,6 +12,7 @@ services:
       - API_KEY_EMBEDDING=${API_KEY_EMBEDDING}
       - AFS_CLOUD_FFM=${AFS_CLOUD_FFM}
       - API_KEY_FFM=${API_KEY_FFM}
+      - FFM_MODEL_NAME=${FFM_MODEL_NAME}
       - ENDPOINT_EMBEDDING=${AFS_CLOUD_EMBEDDING}/embeddings/api/embeddings
       - ENDPOINT_FFM=${AFS_CLOUD_FFM}/text-generation/api/models/generate
     ports:

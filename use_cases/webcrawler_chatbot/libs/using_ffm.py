@@ -14,9 +14,8 @@ def get_ffm():
         top_k = 50,
         top_p = 1.,
         frequence_penalty = 1.1,
-        ffm_api_key = os.getenv('API_KEY_FFM'),
-        model= "ffm-7b" # AFS Cloud
-        # model= "tws-ffm-176b-0509-2000" # for ffm.twcc.ai
+        ffm_api_key = os.getenv('FFM_MODEL_NAME'),
+        model= os.getenv('API_KEY_FFM'), # AFS Cloud
     )
 
 def get_embed():
