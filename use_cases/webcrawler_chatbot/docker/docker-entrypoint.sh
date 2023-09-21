@@ -5,10 +5,6 @@ if [ -d "AFS_tools" ]; then
 else
   git clone https://github.com/twcc/AFS_tools.git
 
-  cd AFS_tools
-  git checkout 5-change-flow
-  cd ..
-
   cd AFS_tools/use_cases/webcrawler_chatbot/scrapy/
   pip install -r requirements.txt
   sudo apt install python3-scrapy
@@ -20,7 +16,7 @@ else
   scrapy crawl website -o website.json
 
   cd /home/ubuntu/AFS_tools/use_cases/webcrawler_chatbot
-  apk add build-base libressl-dev libffi-dev
+  apk install build-base libressl-dev libffi-dev
   pip install -r requirements.txt
   python load_embedding_website.py
 fi
