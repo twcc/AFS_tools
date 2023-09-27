@@ -23,7 +23,7 @@ class WebSpider(scrapy.Spider):
     if 'CRAWL_START_URL' in os.environ:
         start_urls = os.environ['CRAWL_START_URL'].split(",")
     else:
-        start_urls = ["https://tws.twcc.ai/"]
+        start_urls = ["https://twsc.twcc.ai/"]
 
     def parse(self, response):
         item = WebsiteItem()

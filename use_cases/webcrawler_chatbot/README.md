@@ -1,18 +1,23 @@
 In this use case, web combines web crawling with Scrapy, data enhancement through FFM embeddings, and interactive user engagement using Streamlit and Langchain which integrated with FFM in [AFS Cloud](https://docs.twcc.ai/en/docs/user-guides/twcc/afs/afs-cloud). 
 
+## Fasten Deployment
 
-## Step 1: Generate Essential Dataset for Embedding
+see [Docker Deloyment](docker/README.md) for more details.
+
+## Step by Step Deployment
+
+### Step 1: Generate Essential Dataset for Embedding
 
 1. Open the "scrapy" folder.
 2. Follow the instructions outlined in the "README.md" file located within the "scrapy" folder. This will guide you on how to generate the required dataset for embedding.
 
-## Step 2: Install Required Packages
+### Step 2: Install Required Packages
 
 1. Open your command prompt or terminal.
 2. Enter the command: `python -m pip install -r requirements.txt`
 3. This command will install the necessary packages that are required for the process.
 
-## Step 3: Update Parameters
+### Step 3: Update Parameters
 
 1. Update the following parameters as needed:
 
@@ -23,12 +28,14 @@ In this use case, web combines web crawling with Scrapy, data enhancement throug
         - Set `AFS_CLOUD_FFM` to your FFM (Formosa Foundataion Model) service's URL in [AFS Cloud](https://docs.twcc.ai/en/docs/user-guides/twcc/afs/afs-cloud).
         - Set `API_KEY_FFM` to your FFM service's API key.
         - You can use `.env` to manage those parameters,
+        - Use following environment varibles in `.env` file, or copy `.env_sampe` to `.env` file. Then modify with your own ffm and api key accordingly.
 ```  
-export AFS_CLOUD_EMBEDDING=https://203-***-***-185.ccs.twcc.ai:5****
-export API_KEY_EMBEDDING=853e8046-***-***-***-d8dcf0bcf025
-
-export AFS_CLOUD_FFM=https://203-***-***-185.ccs.twcc.ai:5***
-export API_KEY_FFM=db2fb350-***-***-***-ff58b9d28f9f
+export AFS_CLOUD_EMBEDDING=https://203-***-***-185.ccs.twcc.ai:***
+export API_KEY_EMBEDDING=a381bd45-8xxxx
+export AFS_CLOUD_FFM=https://203-***-***-185.ccs.twcc.ai:***
+export API_KEY_FFM=caa654ef-9ccc-4xxxx
+export FFM_MODEL_NAME=ffm-bloomz-7b
+export CRAWL_DOMAINS='docs.twcc.ai'
 
 export ENDPOINT_EMBEDDING=${AFS_CLOUD_EMBEDDING}/embeddings/api/embeddings
 export ENDPOINT_FFM=${AFS_CLOUD_FFM}/text-generation/api/models/generate
@@ -38,19 +45,19 @@ export ENDPOINT_FFM=${AFS_CLOUD_FFM}/text-generation/api/models/generate
 
 2. To test your embedding service, run: `python test_ffm.py`
 
-## Step 4: Vectorize Website Dataset
+### Step 4: Vectorize Website Dataset
 
 1. Run the command: `python load_embedding_website.py`
 2. This will initiate the process of creating vectors for the website dataset.
 3. All generated vectors will be stored in the "embeddings/" folder.
 
-## Step 5: Start API Server
+### Step 5: Start API Server
 
 1. Launch the API server using the command: `uvicorn chat_api_server:app --host 0.0.0.0 --port 8000`
 
 Suggestion: you can use "&" at the end of the command, so you can keep going on next step.
 
-## Step 6: Start Chat UI Server
+### Step 6: Start Chat UI Server
 
 Start the chat user interface server by running: `python -m streamlit run chat_ui_server.py`
 
