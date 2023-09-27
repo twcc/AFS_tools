@@ -14,12 +14,12 @@ def get_ffm():
         top_k = 50,
         top_p = 1.,
         frequence_penalty = 1.1,
-        ffm_api_key = os.getenv('FFM_MODEL_NAME'),
-        model= os.getenv('API_KEY_FFM'), # AFS Cloud
+        ffm_api_key = os.getenv('API_KEY_FFM'),
+        model= os.getenv('FFM_MODEL_NAME'), # AFS Cloud
     )
 
 def get_embed():
-    return FormosaEmbedding(endpoint_url=os.getenv('ENDPOINT_EMBEDDING'), 
+    return FormosaEmbedding(endpoint_url=os.getenv('ENDPOINT_EMBEDDING'),
                             api_key=os.getenv('API_KEY_EMBEDDING')
                             )
 
