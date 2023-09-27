@@ -1,6 +1,6 @@
 In this use case, web combines web crawling with Scrapy, data enhancement through FFM embeddings, and interactive user engagement using Streamlit and Langchain which integrated with FFM in [AFS Cloud](https://docs.twcc.ai/en/docs/user-guides/twcc/afs/afs-cloud). 
 
-## Fasten Deployment
+## Faster Deployment
 
 see [Docker Deloyment](docker/README.md) for more details.
 
