@@ -1,5 +1,5 @@
 import sys
-from typing import Any, Dict, List, Mapping
+from typing import Any, Dict, List, Mapping, Union
 import importlib
 import requests
 
@@ -18,6 +18,10 @@ from pydantic_v1 import BaseModel, root_validator
 
 from langchain.embeddings.base import Embeddings
 
+def batch(iterable, n=1):
+    l = len(iterable)
+    for ndx in range(0, l, n):
+        yield iterable[ndx:min(ndx + n, l)]
 
 class FormosaEmbedding(BaseModel, Embeddings):
     """Formosa Embedding service
@@ -36,6 +40,7 @@ class FormosaEmbedding(BaseModel, Embeddings):
     model_name: str = "Formosa Embedding"
     endpoint_url: str = ""
     api_key: str = ""
+    embedding_lot: int = 35 # 320000 for all token, max 2048 for single string
 
     def __init__(self, **kwargs: Any):
         super().__init__(**kwargs)
@@ -65,12 +70,13 @@ class FormosaEmbedding(BaseModel, Embeddings):
         Returns:
             List of embeddings, one for each text.
         """
-        
-        embeddings = [self.embed_query(text) for text in texts]
+
+        embeddings = [self.embed_query(text) for text in batch(texts, self.embedding_lot)]
+        embeddings = [ x for sub_embeddings in embeddings for x in sub_embeddings]
 
         return [list(map(float, e)) for e in embeddings]
 
-    def embed_query(self, text: str) -> List[float]:
+    def embed_query(self, text: Union[str, List[str]]) -> Union[List[float], List[List[float]]]:
         """Embed a query using Formosa Embedding.
 
         Args:
@@ -84,7 +90,10 @@ class FormosaEmbedding(BaseModel, Embeddings):
             'Content-Type': 'application/json',
         }
 
-        parameter_payload = {"input": [text]}
+        if isinstance(text, list):
+            parameter_payload = {"input": text}
+        elif isinstance(text, str):
+            parameter_payload = {"input": [text]}
 
         # send request
         try:
@@ -108,5 +117,7 @@ class FormosaEmbedding(BaseModel, Embeddings):
         if embeddings.get('data') is None:
             return 'Response format error'
 
-        
-        return embeddings['data'][0]['embedding']
+        if isinstance(text, list):
+            return [ x['embedding'] for x in embeddings['data'] ]
+        if isinstance(text, str):
+            return embeddings['data'][0]['embedding']
