@@ -1,3 +1,5 @@
+# Container Deploment
+
 1. Install docker `curl -fsSL get.docker.com | bash` and docker-compose `sudo curl -SL https://github.com/docker/compose/releases/download/v2.20.3/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose; sudo chmod a+x /usr/local/bin/docker-compose` in Ubuntu. (Checkout [docker-compose installation](https://docs.docker.com/compose/install/linux/) for more details)
 2. Copy `.env_sampe` to `.env` file and modify with your own keys in the same folder with docker-compose.yml.
 3. Make sure .env, Dockerfile, docker-entrypoint.sh and docker-compose.yml in the same folder.
