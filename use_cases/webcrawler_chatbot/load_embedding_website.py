@@ -13,8 +13,8 @@ log.info(f"Doing embedding for {GENERATED_JSON_FILE_PATH}")
 embeddings_zh = get_embed()
 
 splitFunc = RecursiveCharacterTextSplitter(separators='',
-                                           chunk_size=250,
-                                           chunk_overlap=20,
+                                           chunk_size=750,
+                                           chunk_overlap=0,
                                            length_function=len)
 
 start_time = time.time()
