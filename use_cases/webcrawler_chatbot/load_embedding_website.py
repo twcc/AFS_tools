@@ -16,9 +16,8 @@ embeddings_zh = get_embed()
 # get environment variables, new in `.env_sample_dev`
 _values = {"TEXT_CHUNK_SIZE": 250, "TEXT_CHUNK_OPVERLAP": 0}
 for env_var in _values.keys():
-    if env_var in os.getenv():
-        _values[env_var] = os.getenv(env_var)
-        log.info(f"Using env var {env_var} = {_values[env_var]}")
+    _values[env_var] = os.getenv(env_var, _values[env_var])
+    log.info(f"Using env var {env_var} = {_values[env_var]}")
 
 splitFunc = RecursiveCharacterTextSplitter(separators='',
                                            chunk_size=_values["TEXT_CHUNK_SIZE"],
