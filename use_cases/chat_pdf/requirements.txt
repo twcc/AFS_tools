@@ -1,0 +1,5 @@
+streamlit
+langchain
+pypdf
+PyPDF2
+watchdog
