@@ -31,13 +31,11 @@ class FormosaFoundationModel(LLM):
         headers = {
             'X-API-KEY': self.ffm_api_key,
             'Content-Type': 'application/json',
+            'X-WRAPPER-VERSION': '0.0.1', 
         }
 
         # send request
         try:
-            print(parameter_payload)
-            print(self.endpoint_url)
-            print(headers)
             response = requests.post(
                 self.endpoint_url, headers=headers, json=parameter_payload
             )

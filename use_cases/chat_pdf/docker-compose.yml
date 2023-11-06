@@ -1,0 +1,20 @@
+version: '3'
+name: ffm-chat-pdf
+services:
+  afs_demo:
+    build: 
+      context: ./docker/
+      dockerfile: Dockerfile
+    entrypoint: /opt/app/docker-entrypoint.sh
+    environment:
+      - AFS_CLOUD_EMBEDDING=${AFS_CLOUD_EMBEDDING}
+      - API_KEY_EMBEDDING=${API_KEY_EMBEDDING}
+      - AFS_CLOUD_FFM=${AFS_CLOUD_FFM}
+      - API_KEY_FFM=${API_KEY_FFM}
+      - FFM_MODEL_NAME=${FFM_MODEL_NAME}
+    ports:
+      - 80:8501
+    volumes:
+      - .:/opt/app
+volumes:
+  embedding_folder:

@@ -88,6 +88,7 @@ class FormosaEmbedding(BaseModel, Embeddings):
         headers = {
             'X-API-KEY': self.api_key,
             'Content-Type': 'application/json',
+            'X-WRAPPER-VERSION': '0.0.1', 
         }
 
         if isinstance(text, list):

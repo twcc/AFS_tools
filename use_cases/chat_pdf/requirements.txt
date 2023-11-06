@@ -1,5 +1,6 @@
 streamlit
 langchain
 pypdf
-PyPDF2
 watchdog
+loguru
+python-dotenv
