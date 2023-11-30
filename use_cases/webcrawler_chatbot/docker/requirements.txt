@@ -1,0 +1,10 @@
+langchain
+python-dotenv
+jq
+faiss-cpu
+uvicorn
+fastapi
+streamlit
+loguru
+scrapy
+beautifulsoup4

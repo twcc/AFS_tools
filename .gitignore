@@ -3,7 +3,9 @@
 .scrapy*
 use_cases/webcrawler_chatbot/scrapy/website/*
 use_cases/webcrawler_chatbot/.env
-use_cases/webcrawler_chatbot/embeddings/*
+use_cases/webcrawler_chatbot/backup
+use_cases/webcrawler_chatbot/generated/all_docs_embedding_website
+use_cases/webcrawler_chatbot/generated/website.json
 *.pyc
 file.log
 .env

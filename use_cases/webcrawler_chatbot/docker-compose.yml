@@ -2,7 +2,7 @@ version: '3'
 services:
   afs_demo:
     build: 
-      context: .
+      context: docker/
       dockerfile: Dockerfile
     entrypoint: /docker-entrypoint.sh
     environment:
@@ -16,8 +16,8 @@ services:
       - ENDPOINT_EMBEDDING=${AFS_CLOUD_EMBEDDING}/embeddings/api/embeddings
       - ENDPOINT_FFM=${AFS_CLOUD_FFM}/text-generation/api/models/generate
     ports:
-      - 80:8501
+      - 80:80
     volumes:
-      - embedding_folder:/home/ubuntu/embeddings/all_docs_embedding_website
+      - .:/home/ubuntu/AFS_tools/use_cases/webcrawler_chatbot
 volumes:
   embedding_folder:

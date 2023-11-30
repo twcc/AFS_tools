@@ -14,9 +14,9 @@ from libs.using_ffm import get_embed, get_ffm
 embeddings_zh = get_embed()
 
 
-retrievers = [FAISS.load_local("/home/ubuntu/embeddings/all_docs_embedding_website",
+retrievers = [FAISS.load_local("/home/ubuntu/AFS_tools/use_cases/webcrawler_chatbot/generated/all_docs_embedding_website",
                                embeddings_zh).as_retriever( 
-                                                           search_type="similarity", 
+                                                           search_type="mmr", 
                                                            search_kwargs={"k": 3, "include_metadata": True}),
              ]
 
