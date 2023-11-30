@@ -7,14 +7,14 @@ import loguru
 
 log = loguru.logger
 
-GENERATED_JSON_FILE_PATH = "/home/ubuntu/AFS_tools/use_cases/webcrawler_chatbot/scrapy/website/website/website.json"
+GENERATED_JSON_FILE_PATH = "/home/ubuntu/AFS_tools/use_cases/webcrawler_chatbot/generated/website.json"
 log.info(f"Doing embedding for {GENERATED_JSON_FILE_PATH}")
 
 embeddings_zh = get_embed()
 
 splitFunc = RecursiveCharacterTextSplitter(separators='',
-                                           chunk_size=250,
-                                           chunk_overlap=20,
+                                           chunk_size=750,
+                                           chunk_overlap=0,
                                            length_function=len)
 
 start_time = time.time()
@@ -37,7 +37,7 @@ datasets = loader.load_and_split(text_splitter=splitFunc)
 doc_embedding = FAISS.from_documents(
     documents=datasets, embedding=embeddings_zh)
 
-doc_embedding.save_local(f"/home/ubuntu/embeddings/all_docs_embedding_website")
+doc_embedding.save_local(f"/home/ubuntu/AFS_tools/use_cases/webcrawler_chatbot/generated/all_docs_embedding_website")
 
 end_time = time.time()
 running_time = end_time - start_time
