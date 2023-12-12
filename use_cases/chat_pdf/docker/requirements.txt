@@ -1,0 +1,14 @@
+streamlit
+streamlit-modal
+langchain
+pypdf
+watchdog
+loguru
+python-dotenv
+PyPDF2
+--find-links https://download.pytorch.org/whl/cpu/torch_stable.html
+torch==1.13.0+cpu
+sentence-transformers
+faiss-cpu
+pycryptodome==3.15.0
+simsimd

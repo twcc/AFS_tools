@@ -1,6 +1,0 @@
-streamlit
-langchain
-pypdf
-watchdog
-loguru
-python-dotenv

@@ -4,6 +4,7 @@ from langchain.llms.base import LLM
 import requests
 from pydantic import Field
 
+
 class FormosaFoundationModel(LLM):
     endpoint_url: str = ''
     max_new_tokens: int = 20
@@ -25,13 +26,14 @@ class FormosaFoundationModel(LLM):
         stop: Optional[List[str]] = None,
     ) -> str:
         params = self._invocation_params
-        parameter_payload = {"inputs": prompt, "parameters": params, "model": self.model}
+        parameter_payload = {"inputs": prompt,
+                             "parameters": params, "model": self.model}
 
         # HTTP headers for authorization
         headers = {
             'X-API-KEY': self.ffm_api_key,
             'Content-Type': 'application/json',
-            'X-WRAPPER-VERSION': '0.0.1', 
+            'X-WRAPPER-VERSION': '0.0.1',
         }
 
         # send request
@@ -85,4 +87,3 @@ class FormosaFoundationModel(LLM):
     def _invocation_params(self) -> Dict[str, Any]:
         """Get the parameters used to invoke the model."""
         return self._default_params
-

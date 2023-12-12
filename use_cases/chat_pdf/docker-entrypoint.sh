@@ -1,5 +1,4 @@
 #! bin/bash
 cd /opt/app
-pip install -r requirements.txt
 
-streamlit run chat.py --server.port 8501
+streamlit run chat_with_documents.py --server.port 80

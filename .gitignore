@@ -1,8 +1,9 @@
-.venv*
+*.venv*
 .vscode
 .scrapy*
 use_cases/webcrawler_chatbot/scrapy/website/*
-use_cases/webcrawler_chatbot/.env
 use_cases/webcrawler_chatbot/embeddings/*
 *.pyc
 file.log
+*.env
+use_cases/webcrawler_chatbot/docker/.env.bak
